@@ -6,7 +6,7 @@ import WeatherCard from './component/weathercard';
 import Icon from './images/icon.1.png'
 import './App.css'
 
-const API_KEY = "bef823d8b25a23e5171b766b892cad8f"; // API key for OpenWeatherMap API
+const API_KEY = process.env.REACT_APP_API_KEY; 
 console.log("apiley",API_KEY)
 const App = () => {
   const [city, setCity] = useState('London'); // Default city set to London
@@ -67,7 +67,7 @@ const App = () => {
   };
 
   const getCityCoordinates = (cityName = city) => {
-    const cityNameTrimmed = cityName
+    const cityNameTrimmed = city;    
     if (cityNameTrimmed === "") return;
     const API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityNameTrimmed}&limit=1&appid=${API_KEY}`;
     fetch(API_URL)
